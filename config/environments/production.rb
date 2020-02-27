@@ -83,10 +83,17 @@ Rails.application.configure do
     password: Rails.application.secrets.email_provider_password
   }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+  
+  # config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = false
+
+  # Using Postmark
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+  config.action_mailer.default_url_options = { host: ENV['HEROKU_DOMAIN_URL'] }
+  # or your custom domain name eg. "www.yourdomain.com"
 
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
