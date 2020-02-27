@@ -14,28 +14,28 @@ class UserMailer < ApplicationMailer
     @passport_type = passport_type(passport)
 
     @role = persona(role)
-    @cell_phone = cell_phone
+
     # Make a method for parse emails
     mail to: "to@example.org"
   end
 
- 	def event_type(ticket_type)
- 		return true if %w[RSVP Talk Inscrição Workshop].include?(ticket_type)
+ 	def passport_type(passport)
+ 		return true if %w[Roler Advanced Begginer].include?(passport)
  	end
 
  	def persona(role)
  		if role == "admin"
-			return "e de como podemos lhe ajudar a se tornar um dev,"
+			return "and welcome Houston, you're on cabin!"
  		elsif role == "member"
- 			return "e de como podemos lhe ajudar a alcançar o seu objetivo relacionado a startups"
+ 			return "and well, you shall not pass by this gate"
  		elsif role == "vip"
- 			return %w[]
+ 			return %w[].sample
  		elsif role == "dealer"
- 			return %w[]
+ 			return %w[].sample
  		elsif role == "carrier"
- 			return %w[e de como podemos lhe ajudar a alcançar o seu objetivo de mudar de carreira,]
+ 			return %w[].sample
  		else
- 			""
+ 			"and why are you here?"
  		end
  	end
 
@@ -50,12 +50,6 @@ class UserMailer < ApplicationMailer
  		    false
  		end
 
-
- 	end
-
-
-
- 	def more_about_us
 
  	end
 end
